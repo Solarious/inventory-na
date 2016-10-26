@@ -1,6 +1,14 @@
 {
 	"name": "inventory",
+	"version": "1.0.0",
+	"description": "MEAN Stack website",
+	"engines": {
+		"node": "4.2.6"
+	},
 	"main": "server.js",
+	"scripts": {
+		"start": "node server.js"
+	},
 	"dependencies": {
 		"express": "~4.5.1",
 		"mongoose": "~3.8.0",
