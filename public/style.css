@@ -1,0 +1,80 @@
+nav a {
+	font-size: 1.7em;
+}
+
+.my-list-group-header {
+	background-color: #eee;
+	color: #000;
+	
+}
+
+.my-list-group-header a {
+	color: #000;
+}
+
+.row-grey {
+	background-color: #eee;
+}
+
+input[type="number"] {
+	width: 6em;
+}
+
+
+@media (max-width: 768px) {
+	input[type="number"] {
+		width: 4em;
+	}
+
+	td input[type="text"] {
+		width: 8em;
+	}
+}
+
+@media (max-width: 544px) {
+	table {
+		font-size: 0.7em;
+	}
+
+	table .btn {
+		font-size: 0.7em;
+		padding: 2px;
+	}
+}
+
+@media (min-width: 544px) and (max-width: 767px) {
+	table {
+		font-size: 1.3em;
+	}
+	table .btn {
+		font-size: 1.3em;
+	}
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	/* Margin bottom by footer height */
+	margin-bottom: 60px;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 60px;
+	background-color: #f5f5f5;
+}
+/* Custom page CSS for footer
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container .text-muted {
+	margin: 20px 0;
+}

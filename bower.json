@@ -1,0 +1,10 @@
+{
+	"name": "inventory",
+	"version": "1.0.0",
+	"dependencies": {
+		"angular": "latest",
+		"angular-route": "latest",
+		"bootstrap": "latest",
+		"jquery": "latest"
+	}
+}
