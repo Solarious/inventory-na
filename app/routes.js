@@ -6,10 +6,13 @@ module.exports = function(app) {
 	.get(function(req, res) {
 		Player.find({}, {name: 1}, 
 		function(err, players) {
-			if (err)
+			if (err) {
 				res.send(err)
-			else
+			} else {
+				// prevents IE from caching
+				res.setHeader('Cache-Control', 'no-cache');
 				res.json(players);
+			}
 		});
 	})
 
@@ -34,8 +37,11 @@ module.exports = function(app) {
 			if (err) {
 				console.log('asdasdasdasda');
 				res.send(err);
-			} else
+			} else {
+				// prevents IE from caching
+				res.setHeader('Cache-Control', 'no-cache');
 				res.json(player);
+			}
 		});
 	})
 

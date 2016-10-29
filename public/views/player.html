@@ -1,7 +1,8 @@
-<div class="alert alert-danger" ng-repeat="alert in alerts" close="closeAlert($index)">
+<div ng-class="'alert alert-' + (alert.type || 'warning')"
+ng-repeat="alert in alerts" close="closeAlert($index)">
 	<a href="#" class="close" data-dismiss="alert">&times;</a>
 	<strong>Alert!</strong>
-	{{alert}}
+	{{alert.msg}}
 </div>
 
 <h2>{{playerName}}'s Stuff</h2>

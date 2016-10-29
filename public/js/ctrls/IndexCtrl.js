@@ -119,10 +119,13 @@ function($scope, $http, $routeParams, $rootScope, $location, Players) {
 		return total;
 	};
 
-	$scope.addAlert = function(msg) {
+	$scope.addAlert = function(msg, type) {
 		if (!$scope.alerts)
 			$scope.alerts = [];
-		$scope.alerts.push(msg);
+		$scope.alerts.push({
+			msg: msg,
+			type: type
+		});
 	};
 
 	$scope.closeAlert = function(index) {
