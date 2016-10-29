@@ -1,3 +1,9 @@
+<div class="alert alert-danger" ng-repeat="alert in alerts" close="closeAlert($index)">
+	<a href="#" class="close" data-dismiss="alert">&times;</a>
+	<strong>Alert!</strong>
+	{{alert}}
+</div>
+
 <h2>{{playerName}}'s Stuff</h2>
 
 <p><button class="btn btn-default" ng-click="addContainer()">New Container</button></p>

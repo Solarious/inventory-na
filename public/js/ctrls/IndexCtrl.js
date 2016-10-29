@@ -3,8 +3,11 @@ app.controller('IndexController', ['$scope', '$http', '$routeParams',
 '$rootScope', '$location', 'Players',
 function($scope, $http, $routeParams, $rootScope, $location, Players) {
 	$scope.getPlayers = function() {
-		Players.get().success(function(data) {
-			$scope.players = data;
+		Players.get()
+		.then(function(res) {
+			$scope.players = res.data;
+		}, function(res) {
+			$scope.addAlert("Failed to get player list from server");
 		});
 	};
 
@@ -14,6 +17,8 @@ function($scope, $http, $routeParams, $rootScope, $location, Players) {
 			.then(function(res) {
 				$scope.newPlayerName = "";
 				$scope.getPlayers();
+			}, function(res) {
+				$scope.addAlert("Failed to create player");
 			});
 		}
 	};
@@ -26,6 +31,8 @@ function($scope, $http, $routeParams, $rootScope, $location, Players) {
 		Players.delete(name)
 		.then(function(res) {
 			$scope.getPlayers();
+		}, function(res) {
+			$scope.addAlert("Failed to delete player");
 		});
 		$scope.toggleDelete();
 		if (name === $scope.playerName)
@@ -35,8 +42,10 @@ function($scope, $http, $routeParams, $rootScope, $location, Players) {
 	$scope.getPlayerData = function() {
 		if ($scope.playerName) {
 			Players.get($scope.playerName)
-			.success(function(data) {
-				$scope.playerData = data;
+			.then(function(res) {
+				$scope.playerData = res.data;
+			}, function(res) {
+				$scope.addAlert("Failed to get player data from server");
 			});
 		}
 	};
@@ -45,6 +54,8 @@ function($scope, $http, $routeParams, $rootScope, $location, Players) {
 		console.log('updatePlayerData called');
 		Players.update($scope.playerName, $scope.playerData)
 		.then(function(res) {
+		}, function(res) {
+			$scope.addAlert("Failed to update player data");
 		});
 	};
 
@@ -106,6 +117,16 @@ function($scope, $http, $routeParams, $rootScope, $location, Players) {
 			total += Number(item.quantity) * Number(item.weight);
 		}
 		return total;
+	};
+
+	$scope.addAlert = function(msg) {
+		if (!$scope.alerts)
+			$scope.alerts = [];
+		$scope.alerts.push(msg);
+	};
+
+	$scope.closeAlert = function(index) {
+		$scope.alerts.splice(index, 1);
 	};
 
 	$scope.getPlayers();
