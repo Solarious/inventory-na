@@ -68,6 +68,22 @@ function($scope, Players) {
 		return total;
 	};
 
+	$scope.showAddItemModal = function(container) {
+		$scope.modalContainer = container
+		$('#addItemModal').modal('show');
+	};
+
+	$scope.addItemModalAction = function() {
+		var count = Number($scope.addItemQuantity);
+		for (var i = 0; i < count; i++) {
+			$scope.addItem($scope.modalContainer);
+		}
+		$('#addItemModal').modal('hide');
+	}
+
 	$scope.setPlayerName();
 	$scope.getPlayerData();
+	$('#addItemModal').on('shown.bs.modal', function() {
+		$('#quantity').focus();
+	});
 }]);

@@ -4,6 +4,9 @@ function($routeProvider, $locationProvider) {
 	$routeProvider
 	.when('/', {
 		templateUrl: 'views/home.html',
+		controller: ['$scope', function($scope) {
+			$scope.setPlayerName();
+		}]
 	})
 	.when('/:player_name', {
 		templateUrl: 'views/player.html',

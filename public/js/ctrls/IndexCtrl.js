@@ -65,5 +65,5 @@ function($scope, $http, $routeParams, $rootScope, $location, Players) {
 
 	$scope.getPlayers();
 	$scope.showDelete = false;
-	$scope.playerName = $routeParams.player_name;
+	$scope.setPlayerName();
 }]);

@@ -1,68 +1,95 @@
+<div class="modal fade" id="addItemModal" tabindex="-1">
+<div class="modal-dialog modal-sm">
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">
+			&times;
+		</button>
+		<h4>Header</h4>
+	</div>
+	<div class="modal-body">
+		<input type="number" id="quantity" ng-model="addItemQuantity"/>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">
+			Cancel
+		</button>
+		<button type="button" class="btn btn-primary" ng-click="addItemModalAction()">
+			Add Items
+		</button>
+	</div>
+</div>
+</div>
+</div>
+
 <h2>{{playerName}}'s Stuff</h2>
 
 <p><button class="btn btn-default" ng-click="addContainer()">New Container</button></p>
 <!--<div class="table-responsive" ng-repeat="container in playerData.containers">-->
 <table class="table table-bordered table-condensed" ng-repeat="container in playerData.containers">
-	<thead>
-		<tr>
-			<td>
-				<div class="dropdown">
-					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-						Action <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu">
-						<li><a href="#" ng-click="addItem(container)">Add Item</a></li>
-						<li class="divider"></li>
-						<li><a href="#" ng-click="removeContainer(container)">
-							<span class="text-danger">Delete</span>
-						</a></li>
-					</ul>
-				</div>
-			</td>
-			<td colspan="4">
-				<input type="text" ng-model="container.name"
-				ng-model-options="{ debounce: 1000 }" ng-change="updatePlayerData()"/>
-			</td>
-		</tr>
-		<tr class="row-grey">
-			<th>Action</th>
-			<th>Name</th>
-			<th>Quantity</th>
-			<th>Weight</th>
-			<th>Total</th>
-		</tr>
-		<tr ng-repeat="item in container.items">
-			<td>
-				<div class="dropdown">
-					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-						Action <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu">
-						<li class="dropdown-header">Move to</li>
-						<li ng-repeat="con in playerData.containers">
-							<a href="#" ng-click="moveItem(container, item, con)">{{con.name}}</a>
-						</li>
-						<li class="divider"></li>
-						<li><a href="#" ng-click="removeItem(container, item)">
-							<span class="text-danger">Delete</span>
-						</a></li>
-					</ul>
-				</div>
-			</td>
-			<td><input type="text" ng-model="item.name"
-			ng-model-options="{ debounce: 1000 }" ng-change="updatePlayerData()"/></td>
-			<td><input type="number" ng-model="item.quantity"
-			ng-model-options="{ debounce: 1000 }" ng-change="updatePlayerData()"/></td>
-			<td><input type="number" ng-model="item.weight"
-			ng-model-options="{ debounce: 1000 }" ng-change="updatePlayerData()"/></td>
-			<td>{{item.quantity * item.weight}}</td>
-			
-		</tr>
-		<tr class="row-grey">
-			<td></td>
-			<td colspan="3" class="bottom-row"><strong>Total Weight</strong></td>
-			<td><strong>{{totalWeight(container)}}</strong></td>
-		</tr>
-	</thead>
+<thead>
+	<tr>
+		<td>
+			<div class="dropdown">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+					Action <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="#" ng-click="addItem(container)">Add Item</a></li>
+					<li><a href="#" ng-click="showAddItemModal(container)">Add Multiple Items</a></li>
+					<li class="divider"></li>
+					<li><a href="#" ng-click="removeContainer(container)">
+						<span class="text-danger">Delete</span>
+					</a></li>
+				</ul>
+			</div>
+		</td>
+		<td colspan="4">
+			<input type="text" ng-model="container.name"
+			ng-model-options="{ debounce: 1000 }" ng-change="updatePlayerData()"/>
+		</td>
+	</tr>
+	<tr class="row-grey">
+		<th>Action</th>
+		<th>Name</th>
+		<th>Quantity</th>
+		<th>Weight</th>
+		<th>Total</th>
+	</tr>
+</thead>
+</tbody>
+	<tr ng-repeat="item in container.items">
+		<td>
+			<div class="dropdown">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+					Action <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li class="dropdown-header">Move to Container</li>
+					<li ng-repeat="con in playerData.containers">
+						<a href="#" ng-click="moveItem(container, item, con)">{{con.name}}</a>
+					</li>
+					<li class="divider"></li>
+					<li><a href="#" ng-click="removeItem(container, item)">
+						<span class="text-danger">Delete</span>
+					</a></li>
+				</ul>
+			</div>
+		</td>
+		<td><input type="text" ng-model="item.name"
+		ng-model-options="{ debounce: 1000 }" ng-change="updatePlayerData()"/></td>
+		<td><input type="number" ng-model="item.quantity"
+		ng-model-options="{ debounce: 1000 }" ng-change="updatePlayerData()"/></td>
+		<td><input type="number" ng-model="item.weight"
+		ng-model-options="{ debounce: 1000 }" ng-change="updatePlayerData()"/></td>
+		<td>{{item.quantity * item.weight}}</td>
+		
+	</tr>
+	<tr class="row-grey">
+		<td></td>
+		<td colspan="3" class="bottom-row"><strong>Total Weight</strong></td>
+		<td><strong>{{totalWeight(container)}}</strong></td>
+	</tr>
+</tbody>
 </table>
 <!--</div>-->
