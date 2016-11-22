@@ -20,6 +20,10 @@ input[type="number"] {
 	width: 6em;
 }
 
+.selected-player {
+	font-weight: bold;
+}
+
 
 @media (max-width: 768px) {
 	input[type="number"] {

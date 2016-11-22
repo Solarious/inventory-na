@@ -5,13 +5,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<base href="/"/>
 	<title>Inventory</title>
-	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css"></script>
-	<link rel="stylesheet" href="style.css"></script>
+	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="style.css"/>
 	<script src="libs/jquery/dist/jquery.min.js"></script>
 	<script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="libs/angular/angular.js"></script>
 	<script src="libs/angular-route/angular-route.min.js"></script>
 	<script src="js/ctrls/IndexCtrl.js"></script>
+	<script src="js/ctrls/PlayerDataCtrl.js"></script>
 	<script src="js/services/PlayerService.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/appRoutes.js"></script>
@@ -27,7 +28,7 @@
 				<a href="/"><h2 >Players</h2></a>
 			</li>
 			<li class="list-group-item clearfix" ng-repeat="player in players">
-				<a ng-href="/{{player.name}}" ng-style="navStyle(player.name)">
+				<a ng-href="/{{player.name}}" ng-class="navClass(player.name)">
 					{{player.name}}
 				</a>
 				<button type=button" class="btn btn-danger pull-right" ng-if="showDelete"
@@ -41,7 +42,15 @@
 		<input type="button" value="create" ng-click="createPlayer()" />
 		<input type="button" value="delete" ng-click="toggleDelete()"/>
 	</nav>
-	<div class="col-sm-9" ng-view>
+	<div class="col-sm-9">
+		<div ng-class="'alert alert-' + (alert.type || 'warning')"
+		ng-repeat="alert in alerts" close="closeAlert($index)">
+			<a href="#" class="close" data-dismiss="alert">&times;</a>
+			<strong>Alert!</strong>
+			{{alert.msg}}
+		</div>
+		<div ng-view>
+		</div>
 	</div>
 </div>
 
