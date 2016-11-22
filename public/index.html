@@ -19,6 +19,27 @@
 </head>
 <body ng-app="inventoryApp" ng-controller="IndexController">
 <div class="container">
+	<div class="modal fade" id="confirmDeleteModal" tabindex="-1">
+	<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">
+				&times;
+			</button>
+			<h4>Are you sure you want to delete {{modalPlayerName}}?</h4>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">
+				Cancel
+			</button>
+			<button type="button" class="btn btn-danger" ng-click="confirmDeleteModalAction()">
+				Delete
+			</button>
+		</div>
+	</div>
+	</div>
+	</div>
+
 	<div class="jumbotron">
 		<h1 class="text-center">Inventory</h1>
 	</div>
@@ -32,7 +53,7 @@
 					{{player.name}}
 				</a>
 				<button type=button" class="btn btn-danger pull-right" ng-if="showDelete"
-				ng-click="deletePlayer(player.name)">
+				ng-click="showConfirmDeleteModal(player.name)">
 					<span class="glyphicon glyphicon-remove"></span> Delete
 				</button>
 			</li>

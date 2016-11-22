@@ -34,7 +34,6 @@ function($scope, $http, $routeParams, $rootScope, $location, Players) {
 		}, function(res) {
 			$scope.addAlert("Failed to delete player");
 		});
-		$scope.toggleDelete();
 		if (name === $scope.playerName)
 			$location.path('/');
 	};
@@ -61,6 +60,18 @@ function($scope, $http, $routeParams, $rootScope, $location, Players) {
 
 	$scope.closeAlert = function(index) {
 		$scope.alerts.splice(index, 1);
+	};
+
+	$scope.showConfirmDeleteModal = function(playerName) {
+		$scope.modalPlayerName = playerName;
+		$('#addItemModal').modal('hide');
+		$('#confirmDeleteModal').modal('show');
+		$scope.toggleDelete();
+	};
+
+	$scope.confirmDeleteModalAction = function() {
+		$scope.deletePlayer($scope.modalPlayerName);
+		$('#confirmDeleteModal').modal('hide');
 	};
 
 	$scope.getPlayers();

@@ -69,7 +69,8 @@ function($scope, Players) {
 	};
 
 	$scope.showAddItemModal = function(container) {
-		$scope.modalContainer = container
+		$scope.modalContainer = container;
+		$('#confirmDeleteModal').modal('hide');
 		$('#addItemModal').modal('show');
 	};
 
