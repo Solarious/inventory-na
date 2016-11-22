@@ -73,8 +73,8 @@
 	</nav>
 	<div class="col-sm-9">
 		<div ng-class="'alert alert-' + (alert.type || 'warning')"
-		ng-repeat="alert in alerts" close="closeAlert($index)">
-			<a href="#" class="close" data-dismiss="alert">&times;</a>
+		ng-repeat="alert in alerts">
+			<a href="#" class="close" ng-click="closeAlert($index)">&times;</a>
 			<strong>Alert!</strong>
 			{{alert.msg}}
 		</div>
