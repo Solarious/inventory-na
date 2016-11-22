@@ -37,10 +37,18 @@
 				</button>
 			</li>
 		</ul>
-		<p>New Player:</p>
-		<input type="text" ng-model="newPlayerName" />
-		<input type="button" value="create" ng-click="createPlayer()" />
-		<input type="button" value="delete" ng-click="toggleDelete()"/>
+		<div class="form-group">
+			<label for="playerName">New Player:</label>
+			<input type="text" id="playerName" ng-model="newPlayerName" />
+		</div>
+		<div class="form-group">
+			<button type="button" class="btn btn-primary" ng-click="createPlayer()">
+				create
+			</button>
+			<button type="button" class="btn btn-danger" ng-click="toggleDelete()">
+				delete
+			</button>
+		</div>
 	</nav>
 	<div class="col-sm-9">
 		<div ng-class="'alert alert-' + (alert.type || 'warning')"
