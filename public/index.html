@@ -49,7 +49,7 @@
 				<a href="/"><h2 >Characters</h2></a>
 			</li>
 			<li class="list-group-item clearfix" ng-repeat="player in players">
-				<a ng-href="/{{player.name}}" ng-class="navClass(player.name)">
+				<a ng-href="/characters/{{player.name}}" ng-class="navClass(player.name)">
 					{{player.name}}
 				</a>
 				<button type=button" class="btn btn-danger pull-right" ng-if="showDelete"

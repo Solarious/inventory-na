@@ -8,7 +8,7 @@ function($routeProvider, $locationProvider) {
 			$scope.setPlayerName();
 		}]
 	})
-	.when('/:player_name', {
+	.when('/characters/:player_name', {
 		templateUrl: 'views/player.html',
 		controller: 'PlayerDataController'
 	});
